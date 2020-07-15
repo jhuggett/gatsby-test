@@ -1,3 +1,6 @@
+const path = require('path')
+const REPO_ABSOLUTE_PATH = path.join(process.cwd(), '../..')
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
@@ -12,6 +15,27 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-tinacms',
+      options: {
+        enabled: process.env.NODE_ENV !== 'production',
+        sidebar: true,
+        plugins: [
+          "gatsby-tinacms-remark",
+          {
+            resolve: 'gatsby-tinacms-git',
+            options: {
+              pathToRepo: REPO_ABSOLUTE_PATH,
+              pathToContent: 'packages/demo-gatsby',
+              defaultCommitMessage: 'Edited with TinaCMS',
+              defaultCommitName: 'TinaCMS',
+              defaultCommitEmail: 'git@tinacms.org',
+              pushOnCommit: false,
+            },
+          },
+        ]
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
