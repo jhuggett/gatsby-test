@@ -1,5 +1,5 @@
-const path = require('path')
-const REPO_ABSOLUTE_PATH = path.join(process.cwd(), '../..')
+
+const REPO_ABSOLUTE_PATH = "/Users/joelhuggett/Documents/Sandbox/forestry/gatsby-starter-blog"
 
 module.exports = {
   siteMetadata: {
@@ -26,7 +26,7 @@ module.exports = {
             resolve: 'gatsby-tinacms-git',
             options: {
               pathToRepo: REPO_ABSOLUTE_PATH,
-              pathToContent: 'packages/demo-gatsby',
+              pathToContent: "",
               defaultCommitMessage: 'Edited with TinaCMS',
               defaultCommitName: 'TinaCMS',
               defaultCommitEmail: 'git@tinacms.org',
